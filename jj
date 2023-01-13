@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ shop.name }}</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>{{ shop.name }}</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section id="home">
+        <h2>Welcome to {{ shop.name }}</h2>
+        <p>We offer a wide range of high-quality clothing for men and women.</p>
+      </section>
+      <section id="products">
+        <h2>Our Products</h2>
+        <ul>
+          {% for product in collections.all.products %}
+            <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+      <section id="about">
+        <h2>About Us</h2>
+        <p>{{ shop.name }} is a small, independent clothing company based in the city.</p>
+      </section>
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: {{ shop.email }}</p>
+        <p>Phone: {{ shop.phone }}</p>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright {{ shop.name }} {{ 'now' | date: "%Y" }}</p>
+    </footer>
+  </body>
+</html>
